@@ -23,10 +23,13 @@ Traditionally, Time series data is modelled using statistical approaches such as
 2. Implementing RandomForest for Price Predictions
 3. Implementing XGBoost for Price Predictions**
 
-> **Highlights of Section1: Visual Inspection of Data (EDA) & Feature Engineering **
+> **Highlights of Section1: Visual Inspection of Data (EDA) & Feature Engineering**
+
 **Adding Weekday and Weekend effect:** Electricity power demand and consequently the prices are generally seasonal in nature. Seasonality means cyclicity of a pattern occurring in data over a short range of time. This occurs due to cyclicity in consumer demand patterns. On weekdays the demand may be more as compared to weekends and this needs to be accounted while modelling the time series data. Thus, we will derive a feature (independent variable) to account for the day of week and we will use this feature later in machine learning models.
+
 **Adding Public Holidays effect:** On account of public holidays, since many industries are shut, an impact of overall electricity load is seen which in turn impacts the prices on exchange. Thus, it will be great to add the effect of these special days. In your own respective regions, this day can be a public holiday or election day etc.
 Creating Training and Testing Datasets: Now, we will create train and test datasets. Since, time series data analysis requires us to maintain the chronological order of data, we would not be able to use the shuffled train_test_split function present in sklearn. Thus, we will manually create a train test split based on no of training days and no of prediction blocks. Normally in the Real Time Electricity Market, bids are submitted for two timeblocks and thus, we need to with as much accuracy as possible, predict the two timeblocks ahead forecasts.
+
 **Note:** Another peculiarity that arises with time series data is the train, validation, test data splits may not follow the pattern available in either of the sets especially when the volatility is high in the dataset and volatility in prices is often encountered. Thus, we would like to make our training set as large as possible to contain as much information as possible in the dataset. This can lead to overfitting but after several iterations, here we have chosen to train the model on all the data except for the last 96 blocks which we choose as the test set.
 
 > **Highlights of Section 2: Implementing XGBoost for Price predictions**
